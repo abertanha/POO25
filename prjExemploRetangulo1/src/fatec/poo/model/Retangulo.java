@@ -21,10 +21,20 @@ public class Retangulo {
     public void setBase(double base) {
         this.base = base;
     }
+    public double getAltura(){
+        return this.altura;
+    }
+    public double getBase(){
+        return this.base;
+    }
     public double calcArea(){
         return (this.altura * this.base);
     }
     public double calcPerimetro(){
         return (2*(this.altura + this.base));
     }
+    public double calcDiagonal(){
+        return(Math.sqrt((Math.pow(this.altura, 2.0)) +(Math.pow(this.base, 2.0))));
+    }
+    
 }
