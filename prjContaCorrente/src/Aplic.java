@@ -42,7 +42,11 @@ public class Aplic {
                 System.out.println("Numero da conta: "+objConta.getNumero());
                 System.out.print("Entre o valor do Saque: ");
                 valorSaque = entrada.nextDouble();
-                objConta.saque(valorSaque);
+                if(objConta.saque(valorSaque)){
+                    System.out.print("Saque realizado!");
+                }else{
+                    System.out.println("Saldo insuficiente.");
+                }
                 break;      
             case 3:
                 System.out.println("Numero da conta: "+objConta.getNumero());
