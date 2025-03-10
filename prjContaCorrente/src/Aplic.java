@@ -43,7 +43,7 @@ public class Aplic {
                 System.out.print("Entre o valor do Saque: ");
                 valorSaque = entrada.nextDouble();
                 if(objConta.saque(valorSaque)){
-                    System.out.print("Saque realizado!");
+                    System.out.print("Saque de " + valorSaque + " realizado!");
                 }else{
                     System.out.println("Saldo insuficiente.");
                 }
