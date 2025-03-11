@@ -30,33 +30,33 @@ public class Aplic {
             opcao = entrada.nextInt();
 
             switch (opcao){
-            case 1:
-                double valorDep;
-                System.out.println("Numero da conta: "+objConta.getNumero());
-                System.out.print("Entre o valor do depósito: ");
-                valorDep = entrada.nextDouble();
-                objConta.deposito(valorDep);
-                break;
-            case 2:
-                double valorSaque;
-                System.out.println("Numero da conta: "+objConta.getNumero());
-                System.out.print("Entre o valor do Saque: ");
-                valorSaque = entrada.nextDouble();
-                if(objConta.saque(valorSaque)){
-                    System.out.print("Saque de " + valorSaque + " realizado!");
-                }else{
-                    System.out.println("Saldo insuficiente.");
-                }
-                break;      
-            case 3:
-                System.out.println("Numero da conta: "+objConta.getNumero());
-                System.out.println("Saldo: "+objConta.getSaldo());
-                break;
-            case 4:
-                sessao = false;
-                break;
-                default:
-                    System.out.println("Operação inválida");
+                case 1:
+                    double valorDep;
+                    System.out.println("Numero da conta: "+objConta.getNumero());
+                    System.out.print("Entre o valor do depósito: ");
+                    valorDep = entrada.nextDouble();
+                    objConta.deposito(valorDep);
+                    break;
+                case 2:
+                    double valorSaque;
+                    System.out.println("Numero da conta: "+objConta.getNumero());
+                    System.out.print("Entre o valor do Saque: ");
+                    valorSaque = entrada.nextDouble();
+                    if(valorSaque < objConta.getSaldo()){
+                        objConta.saque(valorSaque);
+                    }else{
+                        System.out.println("Saldo insuficiente.");
+                    }
+                    break;      
+                case 3:
+                    System.out.println("Numero da conta: "+objConta.getNumero());
+                    System.out.println("Saldo: "+objConta.getSaldo());
+                    break;
+                case 4:
+                    sessao = false;
+                    break;
+                    default:
+                        System.out.println("Operação inválida");
             }
         }
         

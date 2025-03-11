@@ -17,13 +17,8 @@ public class ContaCorrente {
     public double getSaldo(){
         return this.saldo;
     }
-    public boolean saque(double valorSaque){
-        if(valorSaque > this.saldo){
-            return false;
-        }else{
-            this.saldo -= valorSaque;
-            return true;
-        }
+    public void saque(double valorSaque){
+        this.saldo -= valorSaque;
     }
     public void deposito(double valorDep){
         this.saldo += valorDep;
