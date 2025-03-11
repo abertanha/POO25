@@ -10,9 +10,7 @@ public class Aplic {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         DecimalFormat number = new DecimalFormat("#.00");
-        String unidadeMedida;
-        double raio;
-        
+       
         System.out.print("Entre a unidade de medida do raio: ");
         Circulo objCirc = new Circulo(entrada.nextLine());
         
