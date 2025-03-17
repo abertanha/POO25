@@ -1,9 +1,6 @@
 package fatec.poo.model;
-
 /**
- *
  * @author Fatec
- * 
  */   
              //Definição do vínculo de herança(extends) entre
              //a classe Aluno(subclasse) e a classe Pessoa(superclasse) 
