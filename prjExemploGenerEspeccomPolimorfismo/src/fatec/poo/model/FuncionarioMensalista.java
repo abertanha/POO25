@@ -14,7 +14,6 @@ public class FuncionarioMensalista extends Funcionario {
     public void setNumSalMin(double numSalMin){
         this.numSalMin = numSalMin;
     }
-    @Override
     public double calcSalBruto(){
         return this.valSalMin * this.numSalMin;
     }

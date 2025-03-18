@@ -6,6 +6,7 @@ package fatec.poo.model;
 public class FuncionarioHorista extends Funcionario {
     private double valHorTrab;
     private int qtdeHorTrab;
+    private String cargo;
     
     public FuncionarioHorista(int registro, String nome, String dtAdmissao, double valHorTrab){
         super(registro, nome, dtAdmissao);
@@ -14,9 +15,13 @@ public class FuncionarioHorista extends Funcionario {
     public void setHorTrab(int qtdeHorTrab){
         this.qtdeHorTrab = qtdeHorTrab;
     }
-    @Override
     public double calcSalBruto() {
         return this.valHorTrab *  this.qtdeHorTrab;
     }
-    
+    public double calcGratificacao(){
+        return (calcSalBruto() * 0.075);
+    }
+    public double calcSalLiquido(){
+        return ((calcSalBruto() + calcGratificacao()) - calcDesconto());
+    }    
 }
