@@ -7,7 +7,10 @@ import fatec.poo.model.FuncionarioMensalista;
 public class Aplic {
     public static void main(String[] args) {
         DecimalFormat number = new DecimalFormat("#,##0.00");
-        FuncionarioHorista funcHor = new FuncionarioHorista(1010,"Pedro Silveira","14/05/1978",15.80);
+        FuncionarioHorista funcHor = new FuncionarioHorista(1010,
+                "Pedro Silveira",
+                "14/05/1978",
+                15.80);
         
         funcHor.setHorTrab(90);
         funcHor.setCargo("Mecanico");
@@ -20,7 +23,10 @@ public class Aplic {
         System.out.println("Desconto       => " + number.format(funcHor.calcDesconto()));
         System.out.println("Salário Liquido=> " + number.format(funcHor.calcSalLiquido()));
         
-        FuncionarioMensalista funcMen = new FuncionarioMensalista(1253, "Mateus da Silva", "15/06/1980", 750);
+        FuncionarioMensalista funcMen = new FuncionarioMensalista(1253,
+                "Mateus da Silva",
+                "15/06/1980",
+                750);
         
         funcMen.setNumSalMin(3);
         funcMen.setCargo("Engenheiro");
