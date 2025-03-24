@@ -1,6 +1,7 @@
 import java.text.DecimalFormat;
 import fatec.poo.model.FuncionarioHorista;
 import fatec.poo.model.FuncionarioMensalista;
+import fatec.poo.model.FuncionarioComissionado;
 /**
  * @author 0030482321026
  */
@@ -39,6 +40,28 @@ public class Aplic {
         System.out.println("Desconto       => " + number.format(funcMen.calcDesconto()));
         System.out.println("Salário Liquido=> " + number.format(funcMen.calcSalLiquido()));
         
+        FuncionarioComissionado funcCom = new FuncionarioComissionado(1233,
+                "Carlos Ribeiro",
+                "20/11/1990",
+                8);
+        
+        funcCom.setSalBase(1500);
+        funcCom.setCargo("Consultor");
+        for (double i = 0; funcCom.getTotalVendas() < 7500; i = i + 500) {
+            funcCom.addVendas(i);
+        }
+        
+        System.out.println("\n\nNome           => " + funcCom.getNome());
+        System.out.println("Registro        => " + funcCom.getRegistro());
+        System.out.println("Dt de Admissão  => " + funcCom.getdtAdmissao());
+        System.out.println("Cargo           => " + funcCom.getCargo());
+        System.out.println("Salario Base    => " + funcCom.getSalbase());
+        System.out.println("Salario Bruto   => " + number.format(funcCom.calcSalBruto()));
+        System.out.println("Desconto        => " + number.format(funcCom.calcDesconto()));
+        System.out.println("Gratificacao    => " + number.format(funcCom.calcGratificacao()));
+        System.out.println("Taxa de Comissao=> " + number.format(funcCom.getTaxaComissao()) + "%");
+        System.out.println("Total de Vendas => " + number.format(funcCom.getTotalVendas()));
+        System.out.println("Salário Liquido => " + number.format(funcCom.calcSalLiquido()));
     }
     
 }

@@ -16,12 +16,12 @@ public class FuncionarioHorista extends Funcionario {
         this.qtdeHorTrab = qtdeHorTrab;
     }
     public double calcSalBruto() {
-        return this.valHorTrab *  this.qtdeHorTrab;
+        return this.valHorTrab * this.qtdeHorTrab;
     }
     public double calcGratificacao(){
         return (calcSalBruto() * 0.075);
     }
     public double calcSalLiquido(){
-        return ((calcSalBruto() + calcGratificacao()) - calcDesconto());
+        return (super.calcSalLiquido() + calcGratificacao() );
     }    
 }
