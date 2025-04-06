@@ -33,9 +33,14 @@ public class Departamento {
     }
     public void listarFuncionarios(){
         int cont = 0;
+        System.out.println("\n\nSigla: "+this.getSigla()+
+                "\nNome: "+ this.getNome() +
+                "\nQtde. de Funcionários: "+ this.numFunc);
+        System.out.println("\nRegistro\tNome\t\tCargo");
+        
         while(funcionarios[cont] != null){
-            System.out.println("Registro: "+funcionarios[cont].getRegistro() +"\nNome: "
-                    +funcionarios[cont].getNome()+"\nCargo: "
+            System.out.println(funcionarios[cont].getRegistro() +"\t\t"
+                    +funcionarios[cont].getNome()+"\t"
                     +funcionarios[cont++].getCargo());
         }
     }

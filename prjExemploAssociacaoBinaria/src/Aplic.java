@@ -51,6 +51,12 @@ public class Aplic {
             
         //Estabelece a associação entre um objeto da classe Departamento com
         //um objeto da classe FuncionarioComissionado
-        dep2.addFuncionario(funcCom);        
+        dep2.addFuncionario(funcCom);
+
+        // Listando funcionários do departamento 1
+        dep1.listarFuncionarios();
+                
+        // Listando funcionários do departamento 2
+        dep2.listarFuncionarios();
     }    
 }
