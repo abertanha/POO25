@@ -21,11 +21,14 @@ public class Aplic {
         
         Departamento dep1 = new Departamento("CP", "Compras");
         Departamento dep2 = new Departamento("VD", "Vendas");
+        Projeto proj1 = new Projeto(1532, "Refatoração do código XYZ");
+        proj1.setDtInicio("26/04/2025");
+        proj1.setDtTermino("31/05/2025");
         
         
         funcHor.setCargo("Programador");
         funcCom.setCargo("Vendedor");                //dp2
-        funcMen.setCargo("Auxiliar Administrativo"); //dp1
+        funcMen.setCargo("Aux. Admin"); //dp1
      
         //Estabelece a associação entre um objeto da classse FuncionárioHorista
         //com um objeto da classe Departamento
@@ -58,5 +61,13 @@ public class Aplic {
                 
         // Listando funcionários do departamento 2
         dep2.listarFuncionarios();
+        
+        proj1.addFuncionario(funcHor);
+        proj1.addFuncionario(funcCom);
+        proj1.addFuncionario(funcMen);
+        
+        // Listando funcionários do projeto 1
+        proj1.listarFuncionarios();
+        
     }    
 }

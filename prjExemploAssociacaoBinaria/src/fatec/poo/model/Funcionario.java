@@ -10,7 +10,8 @@ abstract public class Funcionario {
     private String dtAdmissao;  
     private String cargo;
     private Departamento departamento; //definicao ponteiro - multiplicidade 1//
-    
+    private Projeto projeto; //definicao ponteiro - multiplicidade 1//
+            
     public Funcionario(int r, String n, String dtAdm){
         registro = r;
         nome = n;
@@ -48,5 +49,10 @@ abstract public class Funcionario {
     public Departamento getDepartamento(){
         return departamento;
     }
-    
+    public void setProjeto(Projeto projeto){
+        this.projeto = projeto;
+    }
+    public Projeto getProjeto(){
+        return projeto;
+    }
 }
