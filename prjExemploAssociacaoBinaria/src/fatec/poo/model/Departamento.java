@@ -38,7 +38,7 @@ public class Departamento {
                 "\nQtde. de Funcionários: "+ this.numFunc);
         System.out.println("\nRegistro\tNome\t\tCargo");
         
-        while(funcionarios[cont] != null){
+        while(cont < numFunc){
             System.out.println(funcionarios[cont].getRegistro() +"\t\t"
                     +funcionarios[cont].getNome()+"\t"
                     +funcionarios[cont++].getCargo());
