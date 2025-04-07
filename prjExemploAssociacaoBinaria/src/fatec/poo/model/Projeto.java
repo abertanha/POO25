@@ -1,4 +1,3 @@
-
 package fatec.poo.model;
 
 /**
@@ -48,11 +47,11 @@ public class Projeto {
     }
     public void listarFuncionarios(){
         int cont = 0;
-        System.out.println("\n\nCódigo: "+this.getCodigo()+
-                "\nDescricao: "+ this.getDescricao() +
-                "\nData Início: "+ this.getDtInicio() + 
-                "\nData Término: "+ this.getDtTermino() +
-                "\nQtde. de Funcionários: "+ this.numFunc);
+        System.out.println("\n\nCódigo: "+codigo+
+                "\nDescricao: "+ descricao +
+                "\nData Início: "+ dtInicio + 
+                "\nData Término: "+ dtTermino +
+                "\nQtde. de Funcionários: "+ numFunc);
         System.out.println("\nRegistro\tNome\t\tCargo\t\t\tDepartamento");
         
         while(cont < numFunc){
@@ -61,6 +60,5 @@ public class Projeto {
                     +funcionarios[cont].getCargo()+"\t\t"
                     +funcionarios[cont++].getDepartamento().getNome());
         }
-    }
-    
+    }  
 }

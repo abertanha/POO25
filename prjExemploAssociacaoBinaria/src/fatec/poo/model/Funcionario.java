@@ -42,13 +42,15 @@ abstract public class Funcionario {
         return(calcSalBruto() - calcDesconto());
     }
     //Tem como parametro o endereco de um objeto
-    //da classe departamento.
+    //da classe Departamento.
     public void setDepartamento(Departamento departamento){
         this.departamento = departamento;
     }
     public Departamento getDepartamento(){
         return departamento;
     }
+    //Tem como parametro o endereco de um objeto
+    //da classe Projeto.
     public void setProjeto(Projeto projeto){
         this.projeto = projeto;
     }

@@ -62,6 +62,8 @@ public class Aplic {
         // Listando funcionários do departamento 2
         dep2.listarFuncionarios();
         
+        
+        // Atribuindo funcionários ao projeto 1
         proj1.addFuncionario(funcHor);
         proj1.addFuncionario(funcCom);
         proj1.addFuncionario(funcMen);

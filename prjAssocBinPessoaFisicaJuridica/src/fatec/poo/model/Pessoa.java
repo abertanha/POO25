@@ -7,15 +7,20 @@ abstract public class Pessoa {
     private String nome;
     private int anoInscricao;
     private double totalCompras;
+    private PedidoCompra[] pedidos;
+    private int numPed;
     
     public Pessoa(String nome, int anoInscricao){
         this.nome = nome;
         this.anoInscricao = anoInscricao;
+        pedidos = new PedidoCompra[10];
+        numPed = 0;
+        
     }
     abstract public double calcBonus(int anoAtual);
     
-    public void addCompras(double valor){
-        this.totalCompras += valor;
+    public void addCompras(){
+        totalCompras += pedidos[numPed++].getValor();
     }
     public String getNome(){
         return this.nome;
@@ -26,4 +31,7 @@ abstract public class Pessoa {
     public double getTotalCompras(){
         return this.totalCompras;
     }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }    
 }

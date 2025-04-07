@@ -33,9 +33,9 @@ public class Departamento {
     }
     public void listarFuncionarios(){
         int cont = 0;
-        System.out.println("\n\nSigla: "+this.getSigla()+
-                "\nNome: "+ this.getNome() +
-                "\nQtde. de Funcionários: "+ this.numFunc);
+        System.out.println("\n\nSigla: "+sigla+
+                "\nNome: "+ nome +
+                "\nQtde. de Funcionários: "+ numFunc);
         System.out.println("\nRegistro\tNome\t\tCargo");
         
         while(cont < numFunc){
