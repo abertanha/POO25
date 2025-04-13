@@ -5,15 +5,10 @@ package fatec.poo.model;
 public class Aluno extends Pessoa{ 
     private String ra;
     private int escolaridade;
-    private Turma turma;//multiplicidade tipo 1
 
     public Aluno(String ra,String nome) {
         super(nome);
         this.ra = ra;
-    }
-    
-    public void setTurma(Turma turma){
-        this.turma = turma;
     }
 
     public String getRa() {
