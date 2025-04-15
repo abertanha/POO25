@@ -9,7 +9,7 @@ import java.util.Date;
 public class Aplic {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        DecimalFormat number = new DecimalFormat("#.###,00");
+        DecimalFormat number = new DecimalFormat("##,00");
         Date data = new Date();
         
         System.out.println("Entre os dados da Pessoa Física: ");
