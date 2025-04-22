@@ -27,6 +27,7 @@ public class Departamento {
     
     public void addFuncionario(Funcionario f){
         funcionarios.add(f);
+        f.setDepartamento(this);
     }
     
     public void listarFuncionarios(){

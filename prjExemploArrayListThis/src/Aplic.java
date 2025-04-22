@@ -49,21 +49,6 @@ public class Aplic {
                           " trabalha no deparamento " + funcHor.getDepartamento().getNome());
        
        
-       //Estabelecendo a associação binária entre 1
-       //objeto da classe FuncionarioMensalista com
-       //1 objeto da classe Departamento
-       funcMen.setDepartamento(objDep1);
-       System.out.println("O funcionário mensalista " + funcMen.getNome() +
-                           " trabalha no departamento " + funcMen.getDepartamento().getNome());
-       
-      
-       //Estabelecendo a associação binária entre 1
-       //objeto da classe FuncionarioComissionado com
-       //1 objeto da classe Departamento
-       funcCom.setDepartamento(objDep2);
-       System.out.println("O funcionário comissionado " + funcCom.getNome() +
-                           " trabalha no departamento " +  funcCom.getDepartamento().getNome());
-      
        //Estabelecendo a associação binária entre um
        //objeto da classe Departamento com 1 ou mais (1..*)
        //objetos da classe FuncionarioHorista, FuncionarioMensalista
@@ -71,33 +56,25 @@ public class Aplic {
        objDep1.addFuncionario(funcHor);
        objDep1.addFuncionario(funcMen);
        objDep2.addFuncionario(funcCom);
+
+       //Estabelecendo a associação binária entre 1
+       //objeto da classe FuncionarioMensalista com
+       //1 objeto da classe Departamento
+       //funcMen.setDepartamento(objDep1);
+       System.out.println("O funcionário mensalista " + funcMen.getNome() +
+                           " trabalha no departamento " + funcMen.getDepartamento().getNome());
        
+      
+       //Estabelecendo a associação binária entre 1
+       //objeto da classe FuncionarioComissionado com
+       //1 objeto da classe Departamento
+       //funcCom.setDepartamento(objDep2);
+       System.out.println("O funcionário comissionado " + funcCom.getNome() +
+                           " trabalha no departamento " +  funcCom.getDepartamento().getNome());
+      
+              
        objDep1.listarFuncionarios();
        objDep2.listarFuncionarios();
-       
-       //estabelecendo a associação binária
-       //entre 1 objeto da classe FuncionarioHorista
-       //com um objeto da classe Projeto
-       funcHor.setProjeto(objPrj);
-       System.out.println("\n\nO funcionário horista " + funcHor.getNome() +
-                           " está alocado no projeto " + 
-                           funcHor.getProjeto().getDescricao());
-       
-       //estabelecendo a associação binária
-       //entre 1 objeto da classe FuncionarioMensalista
-       //com um objeto da classe Projeto
-       funcMen.setProjeto(objPrj);
-       System.out.println("O funcionário mensalista " + funcMen.getNome() +
-                           " está alocado no projeto " + 
-                           funcMen.getProjeto().getDescricao());
-
-       //estabelecendo a associação binária
-       //entre 1 objeto da classe FuncionarioComissionado
-       //com 1 objeto da classe Projeto
-       funcCom.setProjeto(objPrj);
-       System.out.println("O funcionário comissionado " + funcCom.getNome() +
-                           " está alocado no projeto " + 
-                           funcCom.getProjeto().getDescricao());
        
        //estabelecendo a associação binária
        //entre 1 objeto da classe Projeto
@@ -105,7 +82,31 @@ public class Aplic {
        //(Horista, Mensalista, Comissionado)
        objPrj.addFuncionario(funcHor);
        objPrj.addFuncionario(funcMen);
-       objPrj.addFuncionario(funcCom);    
+       objPrj.addFuncionario(funcCom);
+       
+       //estabelecendo a associação binária
+       //entre 1 objeto da classe FuncionarioHorista
+       //com um objeto da classe Projeto
+       //funcHor.setProjeto(objPrj);
+       System.out.println("\n\nO funcionário horista " + funcHor.getNome() +
+                           " está alocado no projeto " + 
+                           funcHor.getProjeto().getDescricao());
+       
+       //estabelecendo a associação binária
+       //entre 1 objeto da classe FuncionarioMensalista
+       //com um objeto da classe Projeto
+       //funcMen.setProjeto(objPrj);
+       System.out.println("O funcionário mensalista " + funcMen.getNome() +
+                           " está alocado no projeto " + 
+                           funcMen.getProjeto().getDescricao());
+
+       //estabelecendo a associação binária
+       //entre 1 objeto da classe FuncionarioComissionado
+       //com 1 objeto da classe Projeto
+       //funcCom.setProjeto(objPrj);
+       System.out.println("O funcionário comissionado " + funcCom.getNome() +
+                           " está alocado no projeto " + 
+                           funcCom.getProjeto().getDescricao());    
 
        objPrj.listarFuncionarios();
     }    
