@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fatec.poo.view;
 
 /**
@@ -30,6 +25,7 @@ public class GuiMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuObjetos = new javax.swing.JMenu();
         jMenuItemRetangulo = new javax.swing.JMenuItem();
+        jMenuItemCirculo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gui Menu");
@@ -43,6 +39,14 @@ public class GuiMenu extends javax.swing.JFrame {
             }
         });
         jMenuObjetos.add(jMenuItemRetangulo);
+
+        jMenuItemCirculo.setText("Circulo");
+        jMenuItemCirculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCirculoActionPerformed(evt);
+            }
+        });
+        jMenuObjetos.add(jMenuItemCirculo);
 
         jMenuBar1.add(jMenuObjetos);
 
@@ -69,6 +73,14 @@ public class GuiMenu extends javax.swing.JFrame {
        
        guiRetangulo.setVisible(true);
     }//GEN-LAST:event_jMenuItemRetanguloActionPerformed
+
+    private void jMenuItemCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCirculoActionPerformed
+        GuiCirculo guiCirculo;
+        
+        guiCirculo = new GuiCirculo();
+        
+        guiCirculo.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCirculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +119,7 @@ public class GuiMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemCirculo;
     private javax.swing.JMenuItem jMenuItemRetangulo;
     private javax.swing.JMenu jMenuObjetos;
     // End of variables declaration//GEN-END:variables

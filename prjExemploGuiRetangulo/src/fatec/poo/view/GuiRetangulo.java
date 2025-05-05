@@ -187,7 +187,7 @@ public class GuiRetangulo extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         DecimalFormat number = new DecimalFormat("#.00");
-        lblArea.setText(String.valueOf(number.format(objRetangulo.calcArea())+objRetangulo.getUnidadeMedida()));
+        lblArea.setText(String.valueOf(number.format(objRetangulo.calcArea())+objRetangulo.getUnidadeMedida()+"²"));
         lblDiagonal.setText(String.valueOf(number.format(objRetangulo.calcDiagonal())+objRetangulo.getUnidadeMedida()));
         lblPerimetro.setText(String.valueOf(number.format(objRetangulo.calcPerimetro())+objRetangulo.getUnidadeMedida()));
         btnConsultar.setEnabled(false);
