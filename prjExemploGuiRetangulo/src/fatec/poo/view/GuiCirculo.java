@@ -31,6 +31,8 @@ public class GuiCirculo extends javax.swing.JFrame {
         txtRaio = new javax.swing.JTextField();
         txtUniMed = new javax.swing.JTextField();
         lblArea = new javax.swing.JLabel();
+        lblDiametro = new javax.swing.JLabel();
+        jLabel133 = new javax.swing.JLabel();
         lblPerimetro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,6 +69,10 @@ public class GuiCirculo extends javax.swing.JFrame {
 
         lblArea.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        lblDiametro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        jLabel133.setText("Diâmetro");
+
         lblPerimetro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,6 +82,7 @@ public class GuiCirculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel133)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnApontar)
                         .addGap(18, 18, 18)
@@ -97,6 +104,7 @@ public class GuiCirculo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblArea, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtRaio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDiametro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
@@ -119,11 +127,18 @@ public class GuiCirculo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel132)
                     .addComponent(lblPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsultar)
-                    .addComponent(btnApontar)
-                    .addComponent(btnSair))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel133)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnConsultar)
+                            .addComponent(btnApontar)
+                            .addComponent(btnSair)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDiametro, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -146,43 +161,10 @@ public class GuiCirculo extends javax.swing.JFrame {
         DecimalFormat number = new DecimalFormat("#.00");
         lblArea.setText(String.valueOf(number.format(objCirculo.calcArea())+objCirculo.getUnidadeMedida()+"²"));
         lblPerimetro.setText(String.valueOf(number.format(objCirculo.calcPerimetro())+objCirculo.getUnidadeMedida()));
+        lblDiametro.setText(String.valueOf(number.format(objCirculo.getRaio()*2)+objCirculo.getUnidadeMedida()));
         btnConsultar.setEnabled(false);
     }//GEN-LAST:event_btnConsultarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiCirculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiCirculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiCirculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiCirculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GuiCirculo().setVisible(true);
-            }
-        });
-    }
     private Circulo objCirculo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApontar;
@@ -191,8 +173,10 @@ public class GuiCirculo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblArea;
+    private javax.swing.JLabel lblDiametro;
     private javax.swing.JLabel lblPerimetro;
     private javax.swing.JTextField txtRaio;
     private javax.swing.JTextField txtUniMed;
