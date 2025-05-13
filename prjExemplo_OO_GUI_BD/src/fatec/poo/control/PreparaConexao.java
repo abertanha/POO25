@@ -12,7 +12,7 @@ public class PreparaConexao {
    private String driver;
    private String usuario;
    private String senha;
-   private Connection connection=null;
+   private Connection connection = null; //null significa que não há conexão.
 
    public PreparaConexao(String usuario, String senha) {   
         this.usuario = usuario;
@@ -33,9 +33,9 @@ public class PreparaConexao {
                   Class.forName(driver);
             
                   connection = DriverManager.getConnection(connectionString, usuario, senha);               
-	          System.out.println("[Conexao OK]");
+	          System.out.println("[Conexão OK]");
             }catch (Exception ex) {
-                  System.out.println("Falha na Abertura da Conexao");
+                  System.out.println("Falha na Abertura da Conexão");
                   System.out.println(ex.toString() + ex.getMessage());
             }
 	}

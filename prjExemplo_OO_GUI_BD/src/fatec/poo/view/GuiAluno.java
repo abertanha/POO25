@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
  * @author Fatec
  */
 public class GuiAluno extends javax.swing.JFrame {
@@ -204,7 +203,7 @@ public class GuiAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       prepCon = new PreparaConexao("","");
+       prepCon = new PreparaConexao("BD2321026","BD2321026");
        prepCon.setDriver("oracle.jdbc.driver.OracleDriver");
        prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");       
        daoAluno = new DaoAluno(prepCon.abrirConexao());
@@ -258,7 +257,7 @@ public class GuiAluno extends javax.swing.JFrame {
        aluno.setNota2(Double.parseDouble(txtNota2.getText()));
               
        //Realizando a inserção do objeto da classe Aluno
-       //no SGBD via objeto da classe DAOAluno 
+       //no SGBD via objeto da classe DaoAluno 
        daoAluno.inserir(aluno);
          
        //Incializando a GUI 
@@ -358,8 +357,6 @@ public class GuiAluno extends javax.swing.JFrame {
             }
         });
     }
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnConsultar;
