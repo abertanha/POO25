@@ -1,16 +1,16 @@
 package fatec.poo.view;
 
-import fatec.poo.model.Projeto;
-import fatec.poo.control.DaoProjeto;
+import fatec.poo.control.DaoDepartamento;
 import fatec.poo.control.PreparaConexao;
+import fatec.poo.model.Departamento;
 import javax.swing.JOptionPane;
 
 /**
  * @author 0030482321026
  */
-public class GuiProjeto extends javax.swing.JFrame {
+public class GuiDepartamento extends javax.swing.JFrame {
 
-    public GuiProjeto() {
+    public GuiDepartamento() {
         initComponents();
     }
 
@@ -25,12 +25,8 @@ public class GuiProjeto extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtDescricao = new javax.swing.JTextField();
-        txtCodigo = new javax.swing.JTextField();
-        txtDtInicio = new javax.swing.JTextField();
-        txtDtTermino = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtSigla = new javax.swing.JTextField();
         btnConsultar = new javax.swing.JButton();
         btnInserir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -38,26 +34,16 @@ public class GuiProjeto extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro Projeto");
+        setTitle("Cadastro Departamento");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jLabel1.setText("Código");
+        jLabel1.setText("Sigla");
 
-        jLabel2.setText("Descrição");
-
-        jLabel3.setText("Data de ínicio");
-
-        jLabel4.setText("Data de término");
-
-        txtDtInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDtInicioActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Nome");
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,30 +86,21 @@ public class GuiProjeto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDescricao))
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(btnConsultar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnInserir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAlterar))
-                            .addComponent(txtDtTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnConsultar)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnInserir)
+                        .addGap(59, 59, 59)
+                        .addComponent(btnAlterar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -136,20 +113,12 @@ public class GuiProjeto extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtDtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDtTermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultar)
                     .addComponent(btnInserir)
@@ -162,24 +131,16 @@ public class GuiProjeto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDtInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDtInicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDtInicioActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0){
-            daoProjeto.excluir(projeto); 
+            daoDepartamento.excluir(departamento); 
             
-            txtCodigo.setText(null);
-            txtDescricao.setText(null);
-            txtDtInicio.setText(null);
-            txtDtTermino.setText(null);
-            
-            txtCodigo.setEnabled(true); 
-            txtDescricao.setEnabled(false);
-            txtDtInicio.setEnabled(false);
-            txtDtTermino.setEnabled(false);
-            txtCodigo.requestFocus();
+            txtSigla.setText(null);
+            txtNome.setText(null);
+                        
+            txtSigla.setEnabled(true); 
+            txtNome.setEnabled(false);
+            txtSigla.requestFocus();
             
             btnConsultar.setEnabled(true);
             btnInserir.setEnabled(false);
@@ -193,25 +154,23 @@ public class GuiProjeto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        projeto = null;
-        projeto = daoProjeto.consultar(Integer.parseInt(txtCodigo.getText()));
+        departamento = null;
+        departamento = daoDepartamento.consultar(txtSigla.getText());
         
-        if(projeto == null){
-            txtCodigo.setEnabled(false);
-            txtDescricao.setEnabled(true);
-            txtDtInicio.setEnabled(true);
-            txtDtTermino.setEnabled(true);
+        if(departamento == null){
+            txtSigla.setEnabled(false);
+            txtNome.setEnabled(true);
             
             btnConsultar.setEnabled(false);
             btnInserir.setEnabled(true);
             btnAlterar.setEnabled(false);
             btnExcluir.setEnabled(false);
         }else {
-            txtDescricao.setText(projeto.getDescricao());
-            txtDtInicio.setText(projeto.getDtInicio());
-            txtDtTermino.setText(projeto.getDtTermino());
+            txtNome.setText(departamento.getNome());
+            txtSigla.setText(departamento.getSigla());
             
-            txtCodigo.setEnabled(false);
+            
+            txtSigla.setEnabled(false);
             btnConsultar.setEnabled(false);
             btnInserir.setEnabled(false);
             btnAlterar.setEnabled(true);
@@ -223,55 +182,46 @@ public class GuiProjeto extends javax.swing.JFrame {
         prepCon = new PreparaConexao("BD2321026","BD2321026");
         prepCon.setDriver("oracle.jdbc.driver.OracleDriver");
         prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");
-        daoProjeto = new DaoProjeto(prepCon.abrirConexao());
+        daoDepartamento = new DaoDepartamento(prepCon.abrirConexao());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         //criando objeto com informações necessárias
-        projeto = new Projeto(Integer.parseInt(txtCodigo.getText()),txtDescricao.getText());
-        projeto.setDtInicio(txtDtInicio.getText());
-        projeto.setDtTermino(txtDtTermino.getText());
-        
+        departamento = new Departamento(txtSigla.getText(),txtNome.getText());
+                
         //Realizando a inserção no banco via objeto criado
-        //chamando o sgbd via método inserir do objeto daoProjeto
-        daoProjeto.inserir(projeto);
+        //chamando o sgbd via método inserir do objeto daoDepartamento
+        daoDepartamento.inserir(departamento);
         
         //inicializando a gui
-        txtCodigo.setText(null);
-        txtDescricao.setText(null);
-        txtDtInicio.setText(null);
-        txtDtTermino.setText(null);
+        txtSigla.setText(null);
+        txtNome.setText(null);
         
-        btnInserir.setEnabled(false);
         btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
         
-        txtCodigo.setEnabled(true);
-        txtDescricao.setEnabled(false);
-        txtDtInicio.setEnabled(false);
-        txtDtTermino.setEnabled(false);
-        txtCodigo.requestFocus();
+        txtSigla.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtSigla.requestFocus();
         
         
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?")== 0){    //Sim
-           projeto.setDtInicio(txtDtInicio.getText());
-           projeto.setDtTermino(txtDtInicio.getText());
-           daoProjeto.alterar(projeto);
+           departamento.setNome(txtNome.getText());
+           daoDepartamento.alterar(departamento);
         }
         
         //inicializando a GUI
-        txtCodigo.setText(null);
-        txtDescricao.setText(null);
-        txtDtInicio.setText(null);
-        txtDtTermino.setText(null);
+        txtSigla.setText(null);
+        txtNome.setText(null);
         
-        txtCodigo.setEnabled(true);
-        txtDescricao.setEnabled(false);
-        txtDtInicio.setEnabled(false);
-        txtDtTermino.setEnabled(false);
-        txtCodigo.requestFocus();
+        txtSigla.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtSigla.requestFocus();
         
         btnConsultar.setEnabled(true);
         btnInserir.setEnabled(false);
@@ -300,20 +250,20 @@ public class GuiProjeto extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GuiProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GuiProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GuiProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GuiProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GuiDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new GuiProjeto().setVisible(true);
+//                new GuiDepartamento().setVisible(true);
 //            }
 //        });
 //    }
@@ -325,14 +275,10 @@ public class GuiProjeto extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtDtInicio;
-    private javax.swing.JTextField txtDtTermino;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSigla;
     // End of variables declaration//GEN-END:variables
-    private DaoProjeto daoProjeto;
-    private Projeto projeto;
+    private Departamento departamento;
+    private DaoDepartamento daoDepartamento;
     private PreparaConexao prepCon;
 }
