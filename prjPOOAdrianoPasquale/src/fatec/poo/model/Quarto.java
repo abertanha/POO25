@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fatec.poo.model;
 
 /**
@@ -20,7 +15,7 @@ public class Quarto {
         this.numero = numero;
         this.tipo = tipo;
         this.valorDiaria = valorDiaria;
-        situacao = false;
+        situacao = false; // quarto desocupado
     }
 
     public int getNumero() {
@@ -43,7 +38,7 @@ public class Quarto {
         return totalFaturado;
     }
     public void reservar() {
-        situacao = true;
+        situacao = true; // quarto ocupado
     }
     public double liberar(int qtdeDias){
         double valorHospedagem = qtdeDias * this.valorDiaria;

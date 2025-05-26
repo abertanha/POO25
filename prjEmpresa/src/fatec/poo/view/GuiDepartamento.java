@@ -155,7 +155,7 @@ public class GuiDepartamento extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         departamento = null;
-        departamento = daoDepartamento.consultar(txtSigla.getText());
+        departamento = daoDepartamento.consultar(txtSigla.getText().toUpperCase());
         
         if(departamento == null){
             txtSigla.setEnabled(false);
@@ -211,7 +211,7 @@ public class GuiDepartamento extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?")== 0){    //Sim
-           departamento.setNome(txtNome.getText());
+           departamento.setNome(txtNome.getText().toUpperCase());
            daoDepartamento.alterar(departamento);
         }
         
