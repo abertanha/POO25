@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fatec.poo.view;
 
+import javax.swing.JOptionPane;
+
 /**
- *
  * @author shenmue
  */
 public class GuiHotel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GuiHotel
-     */
     public GuiHotel() {
         initComponents();
     }
@@ -48,12 +41,27 @@ public class GuiHotel extends javax.swing.JFrame {
         jMenuCadastroQuarto.add(jMenuItemQuarto);
 
         jMenuItemRecepcionista.setText("Recepcionista");
+        jMenuItemRecepcionista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRecepcionistaActionPerformed(evt);
+            }
+        });
         jMenuCadastroQuarto.add(jMenuItemRecepcionista);
 
         jMenuItemHospede.setText("Hospede");
+        jMenuItemHospede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemHospedeActionPerformed(evt);
+            }
+        });
         jMenuCadastroQuarto.add(jMenuItemHospede);
 
         jMenuItemServQuarto.setText("Serviço de Quarto");
+        jMenuItemServQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemServQuartoActionPerformed(evt);
+            }
+        });
         jMenuCadastroQuarto.add(jMenuItemServQuarto);
 
         jMenuBar1.add(jMenuCadastroQuarto);
@@ -75,8 +83,42 @@ public class GuiHotel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQuartoActionPerformed
-        // TODO add your handling code here:
+       GuiQuarto guiQuarto;
+       
+       guiQuarto = new GuiQuarto();
+       
+       guiQuarto.setVisible(true);
     }//GEN-LAST:event_jMenuItemQuartoActionPerformed
+
+    private void jMenuItemRecepcionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRecepcionistaActionPerformed
+       GuiRecepcionista guiRecepcionista;
+       
+       guiRecepcionista = new GuiRecepcionista();
+       
+       guiRecepcionista.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRecepcionistaActionPerformed
+
+    private void jMenuItemHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHospedeActionPerformed
+        GuiHospede guiHospede;
+        try{      
+            guiHospede = new GuiHospede();
+            guiHospede.setVisible(true);
+        } catch (java.text.ParseException ex) {
+            JOptionPane.showMessageDialog(this, 
+                                         "Erro ao inicializar o formulário de cadastro de hóspede:\n" + ex.getMessage(), 
+                                         "Erro de Inicialização", 
+                                         JOptionPane.ERROR_MESSAGE);
+        }
+       
+    }//GEN-LAST:event_jMenuItemHospedeActionPerformed
+
+    private void jMenuItemServQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemServQuartoActionPerformed
+       GuiServicoQuarto guiServicoQuarto;
+       
+       guiServicoQuarto = new GuiServicoQuarto();
+       
+       guiServicoQuarto.setVisible(true);
+    }//GEN-LAST:event_jMenuItemServQuartoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -150,7 +150,52 @@ public class GuiServicoQuarto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO
+        int codigo;
+        try {
+            if (txtNoQuarto.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Código do Serviço deve ser informado.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                txtNoQuarto.requestFocus();
+                return;
+            }
+            codigo = Integer.parseInt(txtNoQuarto.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Código do Serviço inválido! Informe um valor numérico inteiro.", "Erro de Entrada", JOptionPane.ERROR_MESSAGE);
+            txtNoQuarto.requestFocus();
+            return;
+        }
+
+        servicoQuarto = daoServicoQuarto.consultar(codigo);
+
+        if (servicoQuarto != null) {
+            cbxDescricao.setSelectedItem(servicoQuarto.getDescricao());
+            txtValDiaria.setText(String.valueOf(servicoQuarto.getValor()));
+            
+            txtNoQuarto.setEnabled(false);
+            cbxDescricao.setEnabled(true);
+            txtValDiaria.setEnabled(true);
+
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            
+            cbxDescricao.requestFocus();
+        } else { 
+            JOptionPane.showMessageDialog(this, "Serviço de Quarto não cadastrado. Prossiga com a inserção.", "Informação", JOptionPane.INFORMATION_MESSAGE);
+            cbxDescricao.setSelectedIndex(0);
+            txtValDiaria.setText("");
+
+            txtNoQuarto.setEnabled(false);
+            cbxDescricao.setEnabled(true);
+            txtValDiaria.setEnabled(true);
+
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(true);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            
+            cbxDescricao.requestFocus();
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -158,65 +203,142 @@ public class GuiServicoQuarto extends javax.swing.JFrame {
        prepCon.setDriver("oracle.jdbc.driver.OracleDriver");
        prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");       
        daoServicoQuarto = new DaoServicoQuarto(prepCon.abrirConexao());
+       
+       txtNoQuarto.setEnabled(true);
+       cbxDescricao.setEnabled(false);
+       txtValDiaria.setEnabled(false);
+
+       btnConsultar.setEnabled(btnConsultar.isEnabled());
+       btnInserir.setEnabled(false);
+       btnAlterar.setEnabled(false);
+       btnExcluir.setEnabled(false);
+       btnSair.setEnabled(true);
+       
+       txtNoQuarto.requestFocus();
+       cbxDescricao.setSelectedIndex(0);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        dispose(); // fecha a gui
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        prepCon.fecharConexao();// TODO add your handling code here:
+        prepCon.fecharConexao();
     }//GEN-LAST:event_formWindowClosed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        // TODO add your handling code here:
+        int codigo = Integer.parseInt(txtNoQuarto.getText()); 
+        String descricao = (String) cbxDescricao.getSelectedItem();
+        double valor;
+
+        try {
+            if (txtValDiaria.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Valor do serviço deve ser informado.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                txtValDiaria.requestFocus();
+                return;
+            }
+            valor = Double.parseDouble(txtValDiaria.getText().replace(",", "."));
+            if (valor < 0) {
+                 JOptionPane.showMessageDialog(this, "Valor do serviço não pode ser negativo.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                txtValDiaria.requestFocus();
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Valor do serviço inválido!", "Erro de Entrada", JOptionPane.ERROR_MESSAGE);
+            txtValDiaria.requestFocus();
+            return;
+        }
+        
+        servicoQuarto = new ServicoQuarto(codigo, descricao);
+        servicoQuarto.setValor(valor);
+        
+        daoServicoQuarto.inserir(servicoQuarto);
+        JOptionPane.showMessageDialog(this, "Serviço de Quarto inserido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+        txtNoQuarto.setText("");
+        cbxDescricao.setSelectedIndex(0);
+        txtValDiaria.setText("");
+        
+        txtNoQuarto.setEnabled(true);
+        cbxDescricao.setEnabled(false);
+        txtValDiaria.setEnabled(false);
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        
+        txtNoQuarto.requestFocus();
+        
+        servicoQuarto = null;
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração dos Dados do Serviço de Quarto?") == 0) {
+            String novaDescricao = (String) cbxDescricao.getSelectedItem();
+            double novoValor;
+
+            try {
+                if (txtValDiaria.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Valor do serviço deve ser informado.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                    txtValDiaria.requestFocus();
+                    return;
+                }
+                novoValor = Double.parseDouble(txtValDiaria.getText().replace(",", "."));
+                if (novoValor < 0) {
+                    JOptionPane.showMessageDialog(this, "Valor do serviço não pode ser negativo.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                    txtValDiaria.requestFocus();
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Valor do serviço inválido!", "Erro de Entrada", JOptionPane.ERROR_MESSAGE);
+                txtValDiaria.requestFocus();
+                return;
+            }
+            
+            ServicoQuarto servicoAtualizado = new ServicoQuarto(servicoQuarto.getCodigo(), novaDescricao);
+            servicoAtualizado.setValor(novoValor);
+            
+            daoServicoQuarto.alterar(servicoAtualizado);
+            JOptionPane.showMessageDialog(this, "Serviço de Quarto alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        txtNoQuarto.setText("");
+        cbxDescricao.setSelectedIndex(0);
+        txtValDiaria.setText("");
+        
+        txtNoQuarto.setEnabled(true);
+        cbxDescricao.setEnabled(false);
+        txtValDiaria.setEnabled(false);
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        txtNoQuarto.requestFocus();
+        servicoQuarto = null;
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão do Serviço de Quarto?") == 0) {
+            daoServicoQuarto.excluir(servicoQuarto);
+            JOptionPane.showMessageDialog(this, "Serviço de Quarto excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+            txtNoQuarto.setText("");
+            cbxDescricao.setSelectedIndex(0);
+            txtValDiaria.setText("");
+
+            txtNoQuarto.setEnabled(true);
+            cbxDescricao.setEnabled(false);
+            txtValDiaria.setEnabled(false);
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            txtNoQuarto.requestFocus();
+            servicoQuarto = null;
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiServServicoQuarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiServServicoQuarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiServServicoQuarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiServServicoQuarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GuiServServicoQuarto().setVisible(true);
-            }
-        });
-    }
-    //private DaoServicoQuarto daoServicoQuarto;
-    //private ServicoQuarto servicoQuarto;
+    private DaoServicoQuarto daoServicoQuarto;
+    private ServicoQuarto servicoQuarto;
     private PreparaConexao prepCon;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
