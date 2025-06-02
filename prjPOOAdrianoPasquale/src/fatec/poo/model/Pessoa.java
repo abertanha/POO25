@@ -32,5 +32,9 @@ public class Pessoa {
     public String getTelefone() {
         return telefone;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
 }

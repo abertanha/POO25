@@ -290,7 +290,6 @@ public class GuiHospede extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
          if (JOptionPane.showConfirmDialog(null, "Confirma Alteração dos Dados do Hóspede?") == 0) {
-            // DUVIDA Nome PODE SER ALTERADO?, pois não há hospede.setNome() no modelo fornecido.
             String cpfOriginal = this.hospede.getCpf();
             String novoNome = txtNome.getText();
             String novoEndereco = txtEndereco.getText();
@@ -322,12 +321,12 @@ public class GuiHospede extends javax.swing.JFrame {
                 return;
             }
             
-            Hospede hospedeAlterado = new Hospede(cpfOriginal, novoNome);
-            hospedeAlterado.setEndereco(novoEndereco);
-            hospedeAlterado.setTelefone(novoTelefone);
-            hospedeAlterado.setTaxaDesconto(taxaDescontoGUI);
+            hospede.setNome(novoNome);
+            hospede.setEndereco(novoEndereco);
+            hospede.setTelefone(novoTelefone);
+            hospede.setTaxaDesconto(taxaDescontoGUI);
 
-            daoHospede.alterar(hospedeAlterado); 
+            daoHospede.alterar(hospede); 
             JOptionPane.showMessageDialog(this, "Dados do hóspede alterados com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
 

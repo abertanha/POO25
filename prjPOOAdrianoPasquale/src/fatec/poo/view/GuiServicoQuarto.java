@@ -294,11 +294,10 @@ public class GuiServicoQuarto extends javax.swing.JFrame {
                 txtValDiaria.requestFocus();
                 return;
             }
+            servicoQuarto.setDescricao(novaDescricao);
+            servicoQuarto.setValor(novoValor);
             
-            ServicoQuarto servicoAtualizado = new ServicoQuarto(servicoQuarto.getCodigo(), novaDescricao);
-            servicoAtualizado.setValor(novoValor);
-            
-            daoServicoQuarto.alterar(servicoAtualizado);
+            daoServicoQuarto.alterar(servicoQuarto);
             JOptionPane.showMessageDialog(this, "Serviço de Quarto alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
         txtNoQuarto.setText("");

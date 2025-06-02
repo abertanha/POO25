@@ -388,12 +388,12 @@ public class GuiRecepcionista extends javax.swing.JFrame {
                 return;
             }
             
-            Recepcionista recepcionistaAlterado = new Recepcionista(regFuncOriginal, novoNome);
-            recepcionistaAlterado.setEndereco(novoEndereco);
-            recepcionistaAlterado.setTelefone(novoTelefone);
-            recepcionistaAlterado.setTurno(novoTurno);
+            recepcionista.setNome(novoNome);
+            recepcionista.setEndereco(novoEndereco);
+            recepcionista.setTelefone(novoTelefone);
+            recepcionista.setTurno(novoTurno);
 
-            daoRecepcionista.alterar(recepcionistaAlterado);
+            daoRecepcionista.alterar(recepcionista);
 
             JOptionPane.showMessageDialog(this, "Dados do recepcionista alterados com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }

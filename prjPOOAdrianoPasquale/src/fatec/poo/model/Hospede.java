@@ -37,7 +37,8 @@ public class Hospede extends Pessoa {
         // pois não sei se todos os campos que possão vir a ser implementados
         // que passam o CPF terão a mesma máscara que implementei no guiHospede
         // assim esse método sempre será auto-suficiente indiferente de como será chamado
-        if (cpfNumeros.length() != 11) return false;
+        // if (cpfNumeros.length() != 11) return false;
+        // evitar validações dentro do método
         
         //verificando se são todos iguais, ex: 111.111.111-11, 222.222.222-22, etc...
         boolean todosIguais = true;
@@ -81,5 +82,9 @@ public class Hospede extends Pessoa {
         
         // se nenhum return false for acionado então:
         return true; 
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

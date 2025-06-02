@@ -242,7 +242,8 @@ public class GuiQuarto extends javax.swing.JFrame {
        btnAlterar.setEnabled(false);
        btnExcluir.setEnabled(false);
        btnSair.setEnabled(true);
-
+       
+       rdbSolteiro.setSelected(true);
        txtNoQuarto.requestFocus();
     }//GEN-LAST:event_formWindowOpened
 
@@ -334,11 +335,12 @@ public class GuiQuarto extends javax.swing.JFrame {
                 tipoQuarto = "D";
             }
 
-            Quarto quartoAlterado = new Quarto(quarto.getNumero(), tipoQuarto, valDiaria);
-            quartoAlterado.setSituacao(quarto.getSituacao()); 
-            quartoAlterado.setTotalFaturado(quarto.getTotalFaturado());
+            quarto.setTipo(tipoQuarto);
+            quarto.setValorDiaria(valDiaria);
+            quarto.setSituacao(quarto.getSituacao()); 
+            quarto.setTotalFaturado(quarto.getTotalFaturado());
 
-            daoQuarto.alterar(quartoAlterado);
+            daoQuarto.alterar(quarto);
 
             JOptionPane.showMessageDialog(this, "Dados do quarto alterados com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
