@@ -87,7 +87,7 @@ public class DaoServicoQuarto {
     public void excluir(ServicoQuarto servicoQuarto) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("DELETE FROM tblServicoQuarto WHERE COD_SERV = ?");
+            ps = conn.prepareStatement("DELETE FROM tblServicoQuarto WHERE Codigo_ServQuarto = ?");
             ps.setInt(1, servicoQuarto.getCodigo());
 
             ps.execute();

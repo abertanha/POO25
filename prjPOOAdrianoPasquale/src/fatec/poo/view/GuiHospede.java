@@ -254,7 +254,6 @@ public class GuiHospede extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"CPF inválido!","Erro de Validação", JOptionPane.ERROR_MESSAGE);
             
             ftfCPF.setEnabled(true);
-            //ftfCPF.setText(cpfNumeros); DUVIDA// manter o cpf digitado errado no campo para possível correção
             ftfCPF.requestFocus();
                     
             return;

@@ -18,7 +18,7 @@ public class DaoRecepcionista {
     public void inserir(Recepcionista recepcionista) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT INTO tblRecepcionista(RefFunc_Recep, Nome_Recep, Endereco_Recep, " +
+            ps = conn.prepareStatement("INSERT INTO tblRecepcionista(RegFunc_Recep, Nome_Recep, Endereco_Recep, " +
                                            "Telefone_Recep, Turno_Recep) VALUES(?,?,?,?,?)");
             ps.setInt(1, recepcionista.getRegFunc());
             ps.setString(2, recepcionista.getNome());
@@ -45,7 +45,7 @@ public class DaoRecepcionista {
         try {
             ps = conn.prepareStatement("UPDATE tblRecepcionista SET Nome_Recep = ?, Endereco_Recep = ?, " +
                                            "Telefone_Recep = ?, Turno_Recep = ? " +
-                                           "WHERE RefFunc_Recep = ?");
+                                           "WHERE RegFunc_Recep = ?");
 
             ps.setString(1, recepcionista.getNome());
             ps.setString(2, recepcionista.getEndereco());
@@ -69,12 +69,12 @@ public class DaoRecepcionista {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            ps = conn.prepareStatement("SELECT * FROM tblRecepcionista WHERE RefFunc_Recep = ?");
+            ps = conn.prepareStatement("SELECT * FROM tblRecepcionista WHERE RegFunc_Recep = ?");
             ps.setInt(1, regFunc);
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                recepcionista  = new Recepcionista(rs.getInt("RefFunc_Recep"), rs.getString("Nome_Recep"));
+                recepcionista  = new Recepcionista(rs.getInt("RegFunc_Recep"), rs.getString("Nome_Recep"));
                 recepcionista.setEndereco(rs.getString("Endereco_Recep"));
                 recepcionista.setTelefone(rs.getString("Telefone_Recep"));
                 recepcionista.setTurno(rs.getString("Turno_Recep")); 
@@ -94,7 +94,7 @@ public class DaoRecepcionista {
     public void excluir(Recepcionista recepcionista) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("DELETE FROM tblRecepcionista WHERE RefFunc_Recep = ?");
+            ps = conn.prepareStatement("DELETE FROM tblRecepcionista WHERE RegFunc_Recep = ?");
             ps.setInt(1, recepcionista.getRegFunc());
 
             ps.execute();
