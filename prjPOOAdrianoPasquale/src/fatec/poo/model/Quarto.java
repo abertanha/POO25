@@ -49,5 +49,12 @@ public class Quarto {
         
         return valorHospedagem;
     }
-    
+    // DUVIDA ESSES MÉTODOS PODERIAM SER INSERIDOS NESSA ETAPA DO TRABALHO?
+    public void setSituacao(boolean situacao) {
+        this.situacao = situacao;
+    }
+
+    public void setTotalFaturado(double totalFaturado) {
+        this.totalFaturado = totalFaturado;
+    }
 }
