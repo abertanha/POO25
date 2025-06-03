@@ -167,8 +167,6 @@ public class GuiFuncionarioHorista extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        cbxDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "um", "dois", "três", "quatro" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -297,7 +295,7 @@ public class GuiFuncionarioHorista extends javax.swing.JFrame {
            txtRegistro.setEnabled(false);
            txtNome.setEnabled(true);
            rdbFeminino.setEnabled(true);
-           rdbMasculino.setEnabled(false);
+           rdbMasculino.setEnabled(true);
            txtDtAdmissao.setEnabled(true);
            txtCargo.setEnabled(true);
            txtValHorTrab.setEnabled(true);

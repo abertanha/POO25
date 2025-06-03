@@ -86,10 +86,10 @@ public class DaoDepartamento {
         
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("SELECT * from tblDepartamento order by nome_dep");
+            ps = conn.prepareStatement("SELECT * from tblDepartamento ORDER BY nome_dep");
                         
             ResultSet rs = ps.executeQuery();
-           
+
             while(rs.next()){
                 departamentos.add(new Departamento (rs.getString("Sigla_Dep"),
                                                     rs.getString("Nome_Dep")));                
