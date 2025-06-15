@@ -229,7 +229,7 @@ public class GuiQuarto extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        prepCon = new PreparaConexao("BD2321026","BD2321026");
        prepCon.setDriver("oracle.jdbc.driver.OracleDriver");
-       prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");       
+       prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");      
        daoQuarto = new DaoQuarto(prepCon.abrirConexao());
        
        txtNoQuarto.setEnabled(true);
@@ -281,7 +281,7 @@ public class GuiQuarto extends javax.swing.JFrame {
         if (rdbSolteiro.isSelected()) {
             tipoQuarto = "S";
         } else {
-            tipoQuarto = "D";
+            tipoQuarto = "C";
         }
 
         quarto = new Quarto(numQuarto, tipoQuarto, valDiaria);
@@ -332,7 +332,7 @@ public class GuiQuarto extends javax.swing.JFrame {
             if (rdbSolteiro.isSelected()) {
                 tipoQuarto = "S";
             } else {
-                tipoQuarto = "D";
+                tipoQuarto = "C";
             }
 
             quarto.setTipo(tipoQuarto);

@@ -116,26 +116,14 @@ public class GuiHospede extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addGap(37, 37, 37)
+                        .addGap(107, 107, 107)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEndereco))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(21, 21, 21)
-                        .addComponent(txtTelefone))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTaxaDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnConsultar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,8 +133,20 @@ public class GuiHospede extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExcluir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSair)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btnSair))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTaxaDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(91, 91, 91)
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(88, 88, 88)
+                        .addComponent(txtEndereco)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,6 +188,15 @@ public class GuiHospede extends javax.swing.JFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         String cpfFormatado = ftfCPF.getText();
         String cpfNumeros = cpfFormatado.replaceAll("[^0-9]", "");
+        
+        if(!hospede.validarCPF(cpfNumeros)){
+            JOptionPane.showMessageDialog(this,"CPF inválido!","Erro de Validação", JOptionPane.ERROR_MESSAGE);
+            
+            ftfCPF.setEnabled(true);
+            ftfCPF.requestFocus();
+                    
+            return;
+        }
         
         hospede = daoHospede.consultar(cpfNumeros);
 
@@ -236,8 +245,27 @@ public class GuiHospede extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        prepCon = new PreparaConexao("BD2321026","BD2321026");
        prepCon.setDriver("oracle.jdbc.driver.OracleDriver");
-       prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");       
+       prepCon.setConnectionString("jdbc:oracle:thin:@192.168.1.6:1521:xe");        
        daoHospede = new DaoHospede(prepCon.abrirConexao());
+       
+       ftfCPF.setText("");
+       txtNome.setText("");
+       txtEndereco.setText("");
+       txtTelefone.setText("");
+       txtTaxaDesconto.setText("");
+
+       ftfCPF.setEnabled(true);
+       txtNome.setEnabled(false);
+       txtEndereco.setEnabled(false);
+       txtTelefone.setEnabled(false);
+       txtTaxaDesconto.setEnabled(false);
+
+       btnConsultar.setEnabled(true);
+       btnInserir.setEnabled(false);
+       btnAlterar.setEnabled(false);
+       btnExcluir.setEnabled(false);
+
+       ftfCPF.requestFocus();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

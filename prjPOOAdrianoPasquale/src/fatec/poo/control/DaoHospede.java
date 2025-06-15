@@ -46,9 +46,14 @@ public class DaoHospede {
         PreparedStatement ps = null;
         
         try{
-            ps = conn.prepareStatement("UPDATE tblHospede SET Nome_Hospede = ?, Endereco_Hospede = ?, " +
-                                        "Telefone_Hospede = ?, TaxaDesconto_Hospede = ?" +
-                                        "WHERE Cpf_Hospede = ? ");
+            ps = conn.prepareStatement(
+                    "UPDATE tblHospede SET " +
+                    "Nome_Hospede = ?, " +
+                    "Endereco_Hospede = ?, " +
+                    "Telefone_Hospede = ?, " +
+                    "TaxaDesconto_Hospede = ? " +
+                    "WHERE Cpf_Hospede = ?"
+            );
             ps.setString(1, hospede.getNome());
             ps.setString(2, hospede.getEndereco());
             ps.setString(3, hospede.getTelefone());

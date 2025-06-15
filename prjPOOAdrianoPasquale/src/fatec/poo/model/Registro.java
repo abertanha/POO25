@@ -27,6 +27,14 @@ public class Registro {
         recepcionista.addRegistro(this);
     }
 
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -71,6 +79,22 @@ public class Registro {
         }
         
         return valorAPagar;
+    }
+
+    public Recepcionista getRecepcionista() {
+        return recepcionista;
+    }
+
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public ArrayList<ServicoQuarto> getServicos() {
+        return servicos;
     }
     
 }

@@ -1,5 +1,8 @@
 package fatec.poo.view;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,16 +19,17 @@ public class GuiHotel extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuCadastroQuarto = new javax.swing.JMenu();
+        jMenuCadastro = new javax.swing.JMenu();
         jMenuItemQuarto = new javax.swing.JMenuItem();
         jMenuItemRecepcionista = new javax.swing.JMenuItem();
         jMenuItemHospede = new javax.swing.JMenuItem();
         jMenuItemServQuarto = new javax.swing.JMenuItem();
+        jMenuItemRegistro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hotel POO");
 
-        jMenuCadastroQuarto.setText("Cadastro");
+        jMenuCadastro.setText("Cadastro");
 
         jMenuItemQuarto.setText("Quarto");
         jMenuItemQuarto.addActionListener(new java.awt.event.ActionListener() {
@@ -33,7 +37,7 @@ public class GuiHotel extends javax.swing.JFrame {
                 jMenuItemQuartoActionPerformed(evt);
             }
         });
-        jMenuCadastroQuarto.add(jMenuItemQuarto);
+        jMenuCadastro.add(jMenuItemQuarto);
 
         jMenuItemRecepcionista.setText("Recepcionista");
         jMenuItemRecepcionista.addActionListener(new java.awt.event.ActionListener() {
@@ -41,7 +45,7 @@ public class GuiHotel extends javax.swing.JFrame {
                 jMenuItemRecepcionistaActionPerformed(evt);
             }
         });
-        jMenuCadastroQuarto.add(jMenuItemRecepcionista);
+        jMenuCadastro.add(jMenuItemRecepcionista);
 
         jMenuItemHospede.setText("Hospede");
         jMenuItemHospede.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +53,7 @@ public class GuiHotel extends javax.swing.JFrame {
                 jMenuItemHospedeActionPerformed(evt);
             }
         });
-        jMenuCadastroQuarto.add(jMenuItemHospede);
+        jMenuCadastro.add(jMenuItemHospede);
 
         jMenuItemServQuarto.setText("Serviço de Quarto");
         jMenuItemServQuarto.addActionListener(new java.awt.event.ActionListener() {
@@ -57,9 +61,17 @@ public class GuiHotel extends javax.swing.JFrame {
                 jMenuItemServQuartoActionPerformed(evt);
             }
         });
-        jMenuCadastroQuarto.add(jMenuItemServQuarto);
+        jMenuCadastro.add(jMenuItemServQuarto);
 
-        jMenuBar1.add(jMenuCadastroQuarto);
+        jMenuItemRegistro.setText("Registro");
+        jMenuItemRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRegistroActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemRegistro);
+
+        jMenuBar1.add(jMenuCadastro);
 
         setJMenuBar(jMenuBar1);
 
@@ -115,6 +127,18 @@ public class GuiHotel extends javax.swing.JFrame {
        guiServicoQuarto.setVisible(true);
     }//GEN-LAST:event_jMenuItemServQuartoActionPerformed
 
+    private void jMenuItemRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistroActionPerformed
+       GuiRegistro guiRegistro;
+       
+        try {
+            guiRegistro = new GuiRegistro();
+            guiRegistro.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(GuiHotel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_jMenuItemRegistroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -152,10 +176,11 @@ public class GuiHotel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuCadastroQuarto;
+    private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenuItem jMenuItemHospede;
     private javax.swing.JMenuItem jMenuItemQuarto;
     private javax.swing.JMenuItem jMenuItemRecepcionista;
+    private javax.swing.JMenuItem jMenuItemRegistro;
     private javax.swing.JMenuItem jMenuItemServQuarto;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,7 @@ public class Hospede extends Pessoa {
     }
     public static boolean validarCPF(String cpf){
         String cpfNumeros = cpf.replaceAll("[^0-9]", "");
+        if (cpfNumeros.length() != 11) return false;
         
         // já que o método pode ser chamado de qualquer lugar da app adicionei essa verificação
         // pois não sei se todos os campos que possão vir a ser implementados
@@ -40,43 +41,33 @@ public class Hospede extends Pessoa {
         // if (cpfNumeros.length() != 11) return false;
         // evitar validações dentro do método
         
-        //verificando se são todos iguais, ex: 111.111.111-11, 222.222.222-22, etc...
-        boolean todosIguais = true;
-        for(int i = 1; i < 11; i++) {
-            if(cpfNumeros.charAt(i) != cpfNumeros.charAt(0)){
-                todosIguais = false;
-                break;
-            }
-        }
-        if(todosIguais) return false;
-        
+        // verificando se são todos iguais, ex: 111.111.111-11, 222.222.222-22, etc...
+        if (cpfNumeros.matches("(\\d)\\1{10}")) return false;
         
         int[] digitos = new int[11];
         for(int i = 0; i < 11; i++){
             digitos[i] = Integer.parseInt(String.valueOf(cpfNumeros.charAt(i)));
         }
         
-        //constituindo primeiro DV
+        // constituindo primeiro DV
         int soma1 = 0;
         for(int i = 0; i < 9; i++){
-            soma1 += digitos[i] * (i + 1);
+            soma1 += digitos[i] * (10 - i);
         }
-        int dv1Calculado = soma1 % 11;
-        if (dv1Calculado == 10) {
-            dv1Calculado = 0;
-        }
-        //apos calculado primeiro DV é hora de verificar com o recebido
+        int resto1 = soma1 % 11;
+        int dv1Calculado = (resto1 < 2) ? 0 : (11 - resto1);
+        
+        // apos calculado primeiro DV é hora de verificar com o recebido
         if(dv1Calculado != digitos[9]) return false;
         
-        //constituindo segundo DV
+        // constituindo segundo DV
         int soma2 = 0;
-        for(int i = 0; i < 9; i++){
-            soma1 += digitos[i] * (11 - i);
+        for (int i = 0; i < 10; i++) {
+            soma2 += digitos[i] * (11 - i); // Multiplicadores de 11 a 2
         }
-        int dv2Calculado = (soma2 * 10) % 11;
-        if (dv2Calculado == 10) {
-            dv2Calculado = 0;
-        }
+        int resto2 = soma2 % 11;
+        int dv2Calculado = (resto2 < 2) ? 0 : (11 - resto2);
+        
         //apos calculado segundo DV é hora de verificar com o recebido
         if(dv2Calculado != digitos[10]) return false;
         
