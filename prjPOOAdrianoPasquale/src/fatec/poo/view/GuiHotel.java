@@ -24,6 +24,7 @@ public class GuiHotel extends javax.swing.JFrame {
         jMenuItemRecepcionista = new javax.swing.JMenuItem();
         jMenuItemHospede = new javax.swing.JMenuItem();
         jMenuItemServQuarto = new javax.swing.JMenuItem();
+        jMenuRegistro = new javax.swing.JMenu();
         jMenuItemRegistro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,15 +64,19 @@ public class GuiHotel extends javax.swing.JFrame {
         });
         jMenuCadastro.add(jMenuItemServQuarto);
 
-        jMenuItemRegistro.setText("Registro");
+        jMenuBar1.add(jMenuCadastro);
+
+        jMenuRegistro.setText("Registro");
+
+        jMenuItemRegistro.setText("Reservar/Liberar");
         jMenuItemRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemRegistroActionPerformed(evt);
             }
         });
-        jMenuCadastro.add(jMenuItemRegistro);
+        jMenuRegistro.add(jMenuItemRegistro);
 
-        jMenuBar1.add(jMenuCadastro);
+        jMenuBar1.add(jMenuRegistro);
 
         setJMenuBar(jMenuBar1);
 
@@ -128,15 +133,14 @@ public class GuiHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemServQuartoActionPerformed
 
     private void jMenuItemRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistroActionPerformed
-       GuiRegistro guiRegistro;
+        GuiRegistro guiRegistro;
        
         try {
             guiRegistro = new GuiRegistro();
             guiRegistro.setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(GuiHotel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+        }  
     }//GEN-LAST:event_jMenuItemRegistroActionPerformed
 
     /**
@@ -182,5 +186,6 @@ public class GuiHotel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemRecepcionista;
     private javax.swing.JMenuItem jMenuItemRegistro;
     private javax.swing.JMenuItem jMenuItemServQuarto;
+    private javax.swing.JMenu jMenuRegistro;
     // End of variables declaration//GEN-END:variables
 }

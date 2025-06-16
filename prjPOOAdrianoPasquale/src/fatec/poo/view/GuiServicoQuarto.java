@@ -31,7 +31,7 @@ public class GuiServicoQuarto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cbxDescricao = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Serviço de Quarto");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {

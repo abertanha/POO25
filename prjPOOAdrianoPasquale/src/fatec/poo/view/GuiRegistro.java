@@ -69,7 +69,7 @@ public class GuiRegistro extends javax.swing.JFrame {
         ftfDataEntrada = new javax.swing.JFormattedTextField();
         ftfDataSaida = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro Hospedagem");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -368,6 +368,7 @@ public class GuiRegistro extends javax.swing.JFrame {
                 txtNoQuarto.setEnabled(false);
                 btnConSitQuarto.setEnabled(false);
                 
+                btnReservar.setEnabled(true);
                 btnReservar.requestFocus();
             }
         }
@@ -443,7 +444,6 @@ public class GuiRegistro extends javax.swing.JFrame {
         if(registro == null) {
             btnConsultar.setEnabled(false);
             txtCodReg.setEnabled(false);
-            btnReservar.setEnabled(true);
             
             txtRegFunc.setEnabled(true);
             btnConRecep.setEnabled(true);
